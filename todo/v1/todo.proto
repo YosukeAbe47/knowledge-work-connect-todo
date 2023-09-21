@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package todo.v1;
+
+option go_package = "github.com/no-yan/knowledge-work-connect-todo/gen/todo/v1;todov1";
+
+message AddRequest {
+  string title = 1;
+  // string dead_line = 2;  
+}
+
+message AddResponse {
+  string id = 1;
+  bool status = 2;
+}
+
+message DeleteRequest {
+  string id = 1;
+}
+
+message DeleteResponse {
+  string id = 1;
+}
+
+message UpdateRequest {
+  string id = 1;
+  string title = 2;
+  bool status = 3;
+}
+
+message UpdateResponse {
+  string id = 1;
+  bool status = 2;
+}
+
+service TodoService {
+  rpc Add(AddRequest) returns (AddResponse) {}
+  rpc Delete(DeleteRequest) returns (DeleteResponse) {}
+  rpc Update(UpdateRequest) returns (UpdateResponse) {}
+}
+
