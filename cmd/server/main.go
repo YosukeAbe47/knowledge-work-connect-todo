@@ -59,6 +59,7 @@ func (s *TodoServer) Delete(
 		fmt.Printf("Todo (id %s) is not found", req.Msg.Id)
 		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("todo (id %s) not found", req.Msg.Id))
 	}
+	m.Delete(req.Msg.Id)
 	res := connect.NewResponse(&todov1.DeleteResponse{
 		Id: item.(Todo).Id,
 	})
